@@ -19,6 +19,7 @@ public:
 	Victor leftMotor;
 	RobotDrive drive;
 	VictorGroup *victorGroup;
+	PIDController *pidControl;
 	//DoubleSolenoid shiftersolenoid;
 	
 	GearMode gearState;
@@ -29,6 +30,7 @@ public:
 	void TankDriveFunction(float leftValue, float rightValue);
 	void TankDriveFunction(KinectStick leftArm, KinectStick rightArm);
 	void ArcadeDriveFunction(Joystick *joystick);
+	void DriveStraight(float speed);
 	//void SetHighGear();
 	//void SetLowGear();
 	//void SwitchGear();

@@ -19,7 +19,7 @@ private:
 	GamepadButton *rollerBackwardButton;
 	GamepadButton *rampDeployButton;
 	GamepadButton *rampUndeployButton;
-	
+	JoystickButton *driveStraightButton;
 public:
 	OI();
 	Joystick * GetLeftStick();

@@ -4,6 +4,7 @@
 #include "Commands/RollerBackward.h"
 #include "Commands/UndeployRamp.h"
 #include "Commands/DeployRamp.h"
+#include "Commands/StraightWithJoystick.h"
 
 OI::OI() {
 	leftStick = new Joystick(LEFT_JOYSTICK_PORT);
@@ -18,6 +19,7 @@ OI::OI() {
 	rollerBackwardButton = new GamepadButton(gamePad, F310::kAButton);
 	rampDeployButton = new GamepadButton(gamePad, F310::kRightBumper);
 	rampUndeployButton = new GamepadButton(gamePad, F310::kLeftBumper);
+	driveStraightButton = new JoystickButton(leftStick, DRIVE_STRAIGHT_BUTTON);
 		
 	rollerForwardButton->WhenPressed(new RollerForward());
 	rollerStopButton1->WhenPressed(new RollerStop());	
@@ -25,6 +27,7 @@ OI::OI() {
 	rollerBackwardButton->WhenPressed(new RollerBackward());	
 	rampDeployButton->WhenPressed(new DeployRamp());
 	rampUndeployButton->WhenPressed(new UndeployRamp());
+	driveStraightButton->WhileHeld(new StraightWithJoystick());
 }
 
 Joystick * OI::GetLeftStick() {

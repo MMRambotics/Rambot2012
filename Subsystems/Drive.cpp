@@ -9,7 +9,8 @@ Drive::Drive() :
 	drive(leftMotor, rightMotor)//,
 	//shiftersolenoid(SHIFTER_SOLENOID_A_PORT, SHIFTER_SOLENOID_B_PORT)
 {
-	
+	victorGroup = new VictorGroup(&leftMotor, &rightMotor);
+	pidControl = new PIDController(DRIVE_STRAIGHT_P, DRIVE_STRAIGHT_I, DRIVE_STRAIGHT_D, ,victorGroup);
 }
     
 void Drive::InitDefaultCommand() {
@@ -17,21 +18,31 @@ void Drive::InitDefaultCommand() {
 }
 
 void Drive::TankDriveFunction(Joystick *leftStick, Joystick *rightStick){
+    pidControl->Disable();
 	drive.TankDrive(leftStick,rightStick);
 }
 
 void Drive::TankDriveFunction(float leftValue, float rightValue){
+    pidControl->Disable();
 	drive.TankDrive(leftValue, rightValue); 
 }
 
 void Drive::TankDriveFunction(KinectStick leftArm, KinectStick rightArm){
+    pidControl->Disable();
 	drive.TankDrive(leftArm, rightArm);
 }
 
 void Drive::ArcadeDriveFunction(Joystick *joystick){
+    pidControl->Disable();
 	float speed = joystick->GetY();
 	float rotate = -joystick->GetX();
 	drive.ArcadeDrive(speed, rotate);
+}
+
+void Drive::DriveStraight(float speed) {
+    victorGroup->SetModeStraight();
+    victorGroup->SetSpeed(speed);
+    pidControl->Enable();
 }
 
 /*void Drive::SetHighGear() {

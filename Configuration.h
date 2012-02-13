@@ -5,4 +5,9 @@
 #define RAMP_LOCK_WAIT_TIME 2.0
 #define CONVEYOR_SPEED 0.5
 
+// PID Constants for Driving Straight
+const static float DRIVE_STRAIGHT_P = 0.075;
+const static float DRIVE_STRAIGHT_I = 0.0;
+const static float DRIVE_STRAIGHT_D = 0.0;
+
 #endif

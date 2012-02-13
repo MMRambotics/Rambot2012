@@ -7,6 +7,7 @@
 #define GAME_PAD_PORT 3
 #define LEFT_ARM_PORT 1
 #define RIGHT_ARM_PORT 2
+#define DRIVE_STRAIGHT_BUTTON 2
 
 // Drive Subsystem Ports
 #define LEFT_MOTOR_PORT 7
