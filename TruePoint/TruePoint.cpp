@@ -111,9 +111,5 @@ int TruePoint::GetInt() {
     // Little endian, least significant (tail) byte first.  Shift the second
     // byte one byte to the left, then OR the bytes to concatenate.
     UINT16 raw = a | (b << 8);
-
-    int value = (int)raw;
-
-    printf("0x%X\n", value);
-    return value;
+    return (int)raw;
 }
