@@ -1,0 +1,8 @@
+#ifndef CONFIGURATION_H
+#define CONFIGURATION_H
+
+#define ROLLER_SPEED 0.5
+#define RAMP_LOCK_WAIT_TIME 2.0
+#define CONVEYOR_SPEED 0.5
+
+#endif
