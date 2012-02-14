@@ -8,26 +8,26 @@
 
 class OI {
 private:
-	Joystick *leftStick;
-	Joystick *rightStick;
-	F310 *gamePad;
-	KinectStick *leftArm;
-	KinectStick *rightArm;
-	GamepadButton *rollerForwardButton;
-	GamepadButton *rollerStopButton1;
-	GamepadButton *rollerStopButton2;
-	GamepadButton *rollerBackwardButton;
-	GamepadButton *rampDeployButton;
-	GamepadButton *rampUndeployButton;
-	JoystickButton *driveStraightButton;
+    Joystick *leftStick;
+    Joystick *rightStick;
+    F310 *gamePad;
+    KinectStick *leftArm;
+    KinectStick *rightArm;
+    GamepadButton *rollerForwardButton;
+    GamepadButton *rollerStopButton1;
+    GamepadButton *rollerStopButton2;
+    GamepadButton *rollerBackwardButton;
+    GamepadButton *rampDeployButton;
+    GamepadButton *rampUndeployButton;
+    JoystickButton *driveStraightButton;
 public:
-	OI();
-	Joystick * GetLeftStick();
-	Joystick * GetRightStick();
-	F310 * GetGamePad();
-	KinectStick * GetLeftArm();
-	KinectStick * GetRightArm();
-	
+    OI();
+    Joystick * GetLeftStick();
+    Joystick * GetRightStick();
+    F310 * GetGamePad();
+    KinectStick * GetLeftArm();
+    KinectStick * GetRightArm();
+    
 };
 
 #endif

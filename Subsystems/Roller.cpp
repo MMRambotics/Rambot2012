@@ -4,26 +4,26 @@
 #include "../Configuration.h"
 
 Roller::Roller() : 
-	Subsystem("Roller"), 
-	rollerVictor(ROLLER_PORT)
+    Subsystem("Roller"), 
+    rollerVictor(ROLLER_PORT)
 {
-	
+    
 }
     
 void Roller::InitDefaultCommand() {
-	SetDefaultCommand(new RollerStop());
+    SetDefaultCommand(new RollerStop());
 }
 
 void Roller::rollerForward(){
-	rollerVictor.Set(ROLLER_SPEED);
-	
+    rollerVictor.Set(ROLLER_SPEED);
+    
 }
 
 void Roller::rollerStop(){
-	rollerVictor.Set(0.0);
+    rollerVictor.Set(0.0);
 }
 
 void Roller::rollerBackward(){
-	rollerVictor.Set(-ROLLER_SPEED);
-	
+    rollerVictor.Set(-ROLLER_SPEED);
+    
 }

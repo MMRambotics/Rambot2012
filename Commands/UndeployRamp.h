@@ -10,12 +10,12 @@
  */
 class UndeployRamp: public CommandBase {
 public:
-	UndeployRamp();
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
+    UndeployRamp();
+    virtual void Initialize();
+    virtual void Execute();
+    virtual bool IsFinished();
+    virtual void End();
+    virtual void Interrupted();
 };
 
 #endif

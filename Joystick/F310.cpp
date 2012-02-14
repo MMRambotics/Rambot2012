@@ -7,9 +7,9 @@
  * @param port The driverstation port the F310 is plugged into.
  */
 F310::F310(UINT32 port)
-	: Joystick(port)
+    : Joystick(port)
 {
-	
+    
 }
 
 /**
@@ -17,7 +17,7 @@ F310::F310(UINT32 port)
  */
 F310::~F310(void)
 {
-	
+    
 }
 
 /**
@@ -28,15 +28,15 @@ F310::~F310(void)
  */
 float F310::GetX(StickType stick)
 {
-	switch(stick)
-	{
-	case kRightStick:
-		return GetRawAxis(kRightXAxisNum);
-	case kLeftStick:
-		return GetRawAxis(kLeftXAxisNum);
-	default:
-		return 0.0;
-	}
+    switch(stick)
+    {
+    case kRightStick:
+        return GetRawAxis(kRightXAxisNum);
+    case kLeftStick:
+        return GetRawAxis(kLeftXAxisNum);
+    default:
+        return 0.0;
+    }
 }
 
 /**
@@ -47,15 +47,15 @@ float F310::GetX(StickType stick)
  */
 float F310::GetY(StickType stick)
 {
-	switch(stick)
-	{
-	case kRightStick:
-		return GetRawAxis(kRightYAxisNum);
-	case kLeftStick:
-		return GetRawAxis(kLeftYAxisNum);
-	default:
-		return 0.0;
-	}
+    switch(stick)
+    {
+    case kRightStick:
+        return GetRawAxis(kRightYAxisNum);
+    case kLeftStick:
+        return GetRawAxis(kLeftYAxisNum);
+    default:
+        return 0.0;
+    }
 }
 
 /**
@@ -66,15 +66,15 @@ float F310::GetY(StickType stick)
  */
 float F310::GetAxis(AxisType axis)
 {
-	switch(axis)
-	{
-	    case kLeftXAxis: return GetX(kLeftStick);
-	    case kLeftYAxis: return GetY(kLeftStick);
-	    case kRightXAxis: return GetX(kRightStick);
-	    case kRightYAxis: return GetY(kRightStick);
-	    default:
-	    	return 0.0;
-	}
+    switch(axis)
+    {
+        case kLeftXAxis: return GetX(kLeftStick);
+        case kLeftYAxis: return GetY(kLeftStick);
+        case kRightXAxis: return GetX(kRightStick);
+        case kRightYAxis: return GetY(kRightStick);
+        default:
+            return 0.0;
+    }
 }
 
 /**
@@ -84,7 +84,7 @@ float F310::GetAxis(AxisType axis)
  */
 float F310::GetDPadX(void)
 {
-	return GetRawAxis(kDPadXAxisNum);
+    return GetRawAxis(kDPadXAxisNum);
 }
 
 /**
@@ -94,7 +94,7 @@ float F310::GetDPadX(void)
  */
 float F310::GetDPadY(void)
 {
-	return GetRawAxis(kDPadYAxisNum);
+    return GetRawAxis(kDPadYAxisNum);
 }
 
 /**
@@ -105,34 +105,34 @@ float F310::GetDPadY(void)
  */
 bool F310::GetButton(ButtonType button)
 {
-	switch(button)
-	{
-	case kXButton:
-		return GetRawButton(kXButtonNum);
-	case kAButton:
-		return GetRawButton(kAButtonNum);
-	case kBButton:
-		return GetRawButton(kBButtonNum);
-	case kYButton:
-		return GetRawButton(kYButtonNum);
-	case kLeftBumper:
-		return GetRawButton(kLeftBumperNum);
-	case kRightBumper:
-		return GetRawButton(kRightBumperNum);
-	case kLeftTrigger:
-		return GetRawButton(kLeftTriggerNum);
-	case kRightTrigger:
-		return GetRawButton(kRightTriggerNum);
-	case kBackButton:
-		return GetRawButton(kBackButtonNum);
-	case kStartButton:
-		return GetRawButton(kStartButtonNum);
-	case kLeftStickButton:
-		return GetRawButton(kLeftStickButtonNum);
-	case kRightStickButton:
-		return GetRawButton(kRightStickButtonNum);
-	default:
-		return false;
-	}
+    switch(button)
+    {
+    case kXButton:
+        return GetRawButton(kXButtonNum);
+    case kAButton:
+        return GetRawButton(kAButtonNum);
+    case kBButton:
+        return GetRawButton(kBButtonNum);
+    case kYButton:
+        return GetRawButton(kYButtonNum);
+    case kLeftBumper:
+        return GetRawButton(kLeftBumperNum);
+    case kRightBumper:
+        return GetRawButton(kRightBumperNum);
+    case kLeftTrigger:
+        return GetRawButton(kLeftTriggerNum);
+    case kRightTrigger:
+        return GetRawButton(kRightTriggerNum);
+    case kBackButton:
+        return GetRawButton(kBackButtonNum);
+    case kStartButton:
+        return GetRawButton(kStartButtonNum);
+    case kLeftStickButton:
+        return GetRawButton(kLeftStickButtonNum);
+    case kRightStickButton:
+        return GetRawButton(kRightStickButtonNum);
+    default:
+        return false;
+    }
 }
 

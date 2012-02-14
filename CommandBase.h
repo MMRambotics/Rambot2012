@@ -17,16 +17,16 @@
  */
 class CommandBase: public Command {
 public:
-	CommandBase(const char *name);
-	CommandBase();
-	static void init();
-	// Create a single static instance of all of your subsystems
-	static Drive *drive;
-	static Roller *roller;
-	static Conveyor *conveyor;
-	static Turret *turret;
-	//static GiantFour *giantFour;
-	static OI *oi;
+    CommandBase(const char *name);
+    CommandBase();
+    static void init();
+    // Create a single static instance of all of your subsystems
+    static Drive *drive;
+    static Roller *roller;
+    static Conveyor *conveyor;
+    static Turret *turret;
+    //static GiantFour *giantFour;
+    static OI *oi;
 };
 
 #endif

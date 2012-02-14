@@ -5,12 +5,12 @@
 
 class RollerForward: public CommandBase {
 public:
-	RollerForward();
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
+    RollerForward();
+    virtual void Initialize();
+    virtual void Execute();
+    virtual bool IsFinished();
+    virtual void End();
+    virtual void Interrupted();
 };
 
 #endif

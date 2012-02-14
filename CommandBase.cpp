@@ -17,11 +17,11 @@ OI * CommandBase::oi = NULL;
 
 void CommandBase::init() {
     // Create a single static instance of all of your subsystems. The following
-	// line should be repeated for each subsystem in the project.
-	drive = new Drive();
-	roller = new Roller();
-	conveyor = new Conveyor();
-	turret = new Turret();
-	//giantFour = new GiantFour();
-	oi = new OI();
+    // line should be repeated for each subsystem in the project.
+    drive = new Drive();
+    roller = new Roller();
+    conveyor = new Conveyor();
+    turret = new Turret();
+    //giantFour = new GiantFour();
+    oi = new OI();
 }

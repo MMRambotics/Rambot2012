@@ -5,17 +5,17 @@
 
 class GiantFour: public Subsystem {
 private:
-	DoubleSolenoid giantfoursolenoid;
-	DoubleSolenoid ramplocksolenoid;
-	Timer *timer;
+    DoubleSolenoid giantfoursolenoid;
+    DoubleSolenoid ramplocksolenoid;
+    Timer *timer;
 public:
-	GiantFour();
-	void InitDefaultCommand();
-	void LockRamp();
-	void UnlockRamp();
-	void RampUp();
-	void RampDown();
-	Timer * GetTimer();
+    GiantFour();
+    void InitDefaultCommand();
+    void LockRamp();
+    void UnlockRamp();
+    void RampUp();
+    void RampDown();
+    Timer * GetTimer();
 };
 
 #endif

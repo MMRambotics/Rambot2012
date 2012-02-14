@@ -5,13 +5,13 @@
 
 class Conveyor: public Subsystem {
 private:
-	Jaguar conveyor;
+    Jaguar conveyor;
 public:
-	Conveyor();
-	void InitDefaultCommand();
-	void ConveyorUp();
-	void ConveyorStop();
-	void ConveyorDown();
+    Conveyor();
+    void InitDefaultCommand();
+    void ConveyorUp();
+    void ConveyorStop();
+    void ConveyorDown();
 };
 
 #endif

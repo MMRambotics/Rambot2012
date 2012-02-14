@@ -10,12 +10,12 @@
  */
 class ArcadeDrive: public CommandBase {
 public:
-	ArcadeDrive();
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
+    ArcadeDrive();
+    virtual void Initialize();
+    virtual void Execute();
+    virtual bool IsFinished();
+    virtual void End();
+    virtual void Interrupted();
 };
 
 #endif

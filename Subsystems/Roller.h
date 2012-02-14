@@ -5,14 +5,14 @@
 
 class Roller: public Subsystem {
 private:
-	
+    
 public:
-	Jaguar rollerVictor;
-	Roller();
-	void InitDefaultCommand();
-	void rollerForward();
-	void rollerStop();
-	void rollerBackward();
+    Jaguar rollerVictor;
+    Roller();
+    void InitDefaultCommand();
+    void rollerForward();
+    void rollerStop();
+    void rollerBackward();
 };
 
 #endif

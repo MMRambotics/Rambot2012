@@ -10,12 +10,12 @@
  */
 class DeployRamp: public CommandBase {
 public:
-	DeployRamp();
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
+    DeployRamp();
+    virtual void Initialize();
+    virtual void Execute();
+    virtual bool IsFinished();
+    virtual void End();
+    virtual void Interrupted();
 };
 
 #endif

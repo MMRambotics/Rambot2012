@@ -5,10 +5,10 @@
 
 class Turret: public Subsystem {
 private:
-	
+    
 public:
-	Turret();
-	void InitDefaultCommand();
+    Turret();
+    void InitDefaultCommand();
 };
 
 #endif

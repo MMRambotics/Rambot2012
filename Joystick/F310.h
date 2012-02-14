@@ -9,47 +9,47 @@
 class F310 : public Joystick
 {
 public:
-	typedef enum
-	{
-		kLeftStick,
-		kRightStick,
-	} StickType;
-	
-	typedef enum
-	{
-		kLeftXAxis,
-		kLeftYAxis,
-		kRightXAxis,
-		kRightYAxis,
-	} AxisType;
-	
-	typedef enum
-	{
-		kXButton,
-		kAButton,
-		kBButton,
-		kYButton,
-		kLeftBumper,
-		kRightBumper,
-		kLeftTrigger,
-		kRightTrigger,
-		kBackButton,
-		kStartButton,
-		kLeftStickButton,
-		kRightStickButton,
-	} ButtonType;
-	
-	F310(UINT32 port);
-	~F310();
-	
-	float GetX(StickType stick);
-	float GetY(StickType stick);
-	float GetAxis(AxisType axis);
-	float GetDPadX(void);
-	float GetDPadY(void);
-	
-	bool GetButton(ButtonType button);
-	
+    typedef enum
+    {
+        kLeftStick,
+        kRightStick,
+    } StickType;
+    
+    typedef enum
+    {
+        kLeftXAxis,
+        kLeftYAxis,
+        kRightXAxis,
+        kRightYAxis,
+    } AxisType;
+    
+    typedef enum
+    {
+        kXButton,
+        kAButton,
+        kBButton,
+        kYButton,
+        kLeftBumper,
+        kRightBumper,
+        kLeftTrigger,
+        kRightTrigger,
+        kBackButton,
+        kStartButton,
+        kLeftStickButton,
+        kRightStickButton,
+    } ButtonType;
+    
+    F310(UINT32 port);
+    ~F310();
+    
+    float GetX(StickType stick);
+    float GetY(StickType stick);
+    float GetAxis(AxisType axis);
+    float GetDPadX(void);
+    float GetDPadY(void);
+    
+    bool GetButton(ButtonType button);
+    
 private:
     static const UINT32 kLeftXAxisNum = 1;
     static const UINT32 kLeftYAxisNum = 2;
