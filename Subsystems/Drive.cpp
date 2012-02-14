@@ -9,8 +9,12 @@ Drive::Drive() :
     drive(leftMotor, rightMotor)//,
     //shiftersolenoid(SHIFTER_SOLENOID_A_PORT, SHIFTER_SOLENOID_B_PORT)
 {
-    victorGroup = new VictorGroup(&leftMotor, &rightMotor);
-    pidControl = new PIDController(DRIVE_STRAIGHT_P, DRIVE_STRAIGHT_I, DRIVE_STRAIGHT_D, ,victorGroup);
+	victorGroup = new VictorGroup(&leftMotor, &rightMotor);
+	com = new SerialPort(9600);
+	compass = new TruePoint();
+    pCompass = new PitchCompass(compass);
+	aCompass = new AzimuthCompass(compass);
+	pidControl = new PIDController(DRIVE_STRAIGHT_P, DRIVE_STRAIGHT_I, DRIVE_STRAIGHT_D, aCompass, victorGroup);
 }
     
 void Drive::InitDefaultCommand() {

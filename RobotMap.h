@@ -27,4 +27,8 @@
 // Conveyor Subsystem Port
 #define CONVEYOR_PORT 4
 
+// Turret Subsystem Ports
+#define LEFT_SHOOTER_PORT 2
+#define RIGHT_SHOOTER_PORT 3
+
 #endif

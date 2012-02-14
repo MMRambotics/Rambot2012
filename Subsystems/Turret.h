@@ -5,10 +5,14 @@
 
 class Turret: public Subsystem {
 private:
-    
+
+	Jaguar *leftShooter;
+	Jaguar *rightShooter;
 public:
-    Turret();
-    void InitDefaultCommand();
+	Turret();
+	void InitDefaultCommand();
+	void SetShooterSpeed(float speed);
+
 };
 
 #endif
