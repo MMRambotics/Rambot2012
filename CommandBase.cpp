@@ -12,7 +12,7 @@ Drive * CommandBase::drive = NULL;
 Roller * CommandBase::roller = NULL;
 Conveyor * CommandBase::conveyor = NULL;
 Turret * CommandBase::turret = NULL;
-//GiantFour * CommandBase::giantFour = NULL;
+GiantFour * CommandBase::giantFour = NULL;
 OI * CommandBase::oi = NULL;
 
 void CommandBase::init() {
@@ -22,6 +22,6 @@ void CommandBase::init() {
     roller = new Roller();
     conveyor = new Conveyor();
     turret = new Turret();
-    //giantFour = new GiantFour();
+    giantFour = new GiantFour();
     oi = new OI();
 }

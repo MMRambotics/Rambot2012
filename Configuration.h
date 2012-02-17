@@ -10,4 +10,9 @@ const static float DRIVE_STRAIGHT_P = 0.075;
 const static float DRIVE_STRAIGHT_I = 0.0;
 const static float DRIVE_STRAIGHT_D = 0.0;
 
+// PID Constant for Turret
+const static float TURRET_P = 0.0005;
+const static float TURRET_I = 0.0001;
+const static float TURRET_D = 0.0;
+
 #endif

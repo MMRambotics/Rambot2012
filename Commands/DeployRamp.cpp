@@ -2,21 +2,21 @@
 #include "../Configuration.h"
 
 DeployRamp::DeployRamp() {
-    //Requires(giantFour);
+    Requires(giantFour);
 }
 
 // Called just before this Command runs the first time
 void DeployRamp::Initialize() {
-    //giantFour->GetTimer()->Reset();
-    //giantFour->GetTimer()->Start();
+    giantFour->GetTimer()->Reset();
+    giantFour->GetTimer()->Start();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DeployRamp::Execute() {
-    //giantFour->RampDown();
-    //if (giantFour->GetTimer()->Get() > RAMP_LOCK_WAIT_TIME) {
-    //    giantFour->LockRamp();
-    //}
+    giantFour->RampDown();
+    if (giantFour->GetTimer()->Get() > RAMP_LOCK_WAIT_TIME) {
+        giantFour->LockRamp();
+    }
 }
 
 // Make this return true when this Command no longer needs to run execute()

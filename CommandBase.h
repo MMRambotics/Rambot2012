@@ -25,7 +25,7 @@ public:
     static Roller *roller;
     static Conveyor *conveyor;
     static Turret *turret;
-    //static GiantFour *giantFour;
+    static GiantFour *giantFour;
     static OI *oi;
 };
 

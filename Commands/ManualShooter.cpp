@@ -12,7 +12,7 @@ void ManualShooter::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ManualShooter::Execute() {
-	turret->SetShooterSpeed(0.6);
+	turret->SetShooterSpeed(0.0);
 }
 
 // Make this return true when this Command no longer needs to run execute()

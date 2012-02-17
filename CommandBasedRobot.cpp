@@ -38,9 +38,7 @@ private:
     
     virtual void TeleopPeriodic() {
         Scheduler::GetInstance()->Run();
-        //if (CommandBase::oi->GetLeftStick()->GetTrigger() || CommandBase::oi->GetRightStick()->GetTrigger()) {
-        //    CommandBase::drive->SwitchGear();
-        //}
+
         if (CommandBase::oi->GetGamePad()->GetDPadX()!= 0.0) {
             CommandBase::conveyor->ConveyorStop();
         } else if (CommandBase::oi->GetGamePad()->GetDPadY()< 0.0) {
@@ -48,6 +46,8 @@ private:
         } else if (CommandBase::oi->GetGamePad()->GetDPadY() > 0.0) {
             CommandBase::conveyor->ConveyorDown();
         }
+        CommandBase::turret->SetShooterSpeed(CommandBase::oi->GetGamePad()->GetY(F310::kRightStick));
+        CommandBase::turret->Pan(CommandBase::oi->GetGamePad()->GetY(F310::kLeftStick));
     }
 };
 
