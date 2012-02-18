@@ -38,6 +38,10 @@ private:
     
     virtual void TeleopPeriodic() {
         Scheduler::GetInstance()->Run();
+        
+        if (CommandBase::oi->GetLeftStick()->GetTrigger() || CommandBase::oi->GetRightStick()->GetTrigger()) {
+            CommandBase::drive->SwitchGear();
+        }
 
         if (CommandBase::oi->GetGamePad()->GetDPadX()!= 0.0) {
             CommandBase::conveyor->ConveyorStop();

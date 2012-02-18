@@ -12,6 +12,8 @@
 // Drive Subsystem Ports
 #define LEFT_MOTOR_PORT 7
 #define RIGHT_MOTOR_PORT 6
+#define SHIFTER_SOLENOID_PORT_A 1
+#define SHIFTER_SOLENOID_PORT_B 2
 
 // Roller Subsystem Ports
 #define ROLLER_PORT 1

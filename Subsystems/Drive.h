@@ -13,6 +13,12 @@ private:
     // It's desirable that everything possible under private except
     // for methods that implement subsystem capabilities
 public:	
+    typedef enum
+    {
+        kLowGear,
+        kHighGear,
+    } GearMode;
+    
 	Victor rightMotor;
 	Victor leftMotor;
 	RobotDrive drive;
@@ -23,6 +29,10 @@ public:
 	PitchCompass *pCompass;
 	AzimuthCompass *aCompass;
 	
+	DoubleSolenoid shiftersolenoid;
+
+	GearMode gearState;
+	
 	Drive();
 	void InitDefaultCommand();
 	void TankDriveFunction(Joystick *leftJoystick, Joystick *rightJoystick);
@@ -30,6 +40,9 @@ public:
 	void TankDriveFunction(KinectStick leftArm, KinectStick rightArm);
 	void ArcadeDriveFunction(Joystick *joystick);
 	void DriveStraight(float speed);
+	void SetHighGear();
+	void SetLowGear();
+	void SwitchGear();
 
 };
 
