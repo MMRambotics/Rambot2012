@@ -30,10 +30,10 @@
 // Turret Subsystem Ports
 #define LEFT_SHOOTER_PORT 5
 #define RIGHT_SHOOTER_PORT 2
-#define LEFT_ENCODER_A_PORT 1
-#define LEFT_ENCODER_B_PORT 2
-#define RIGHT_ENCODER_A_PORT 3
-#define RIGHT_ENCODER_B_PORT 4
+#define LEFT_ENCODER_A_PORT 2
+#define LEFT_ENCODER_B_PORT 3
+#define RIGHT_ENCODER_A_PORT 4
+#define RIGHT_ENCODER_B_PORT 5
 #define PAN_MOTOR_PORT 3
 
 #endif

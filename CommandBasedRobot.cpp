@@ -51,7 +51,7 @@ private:
             CommandBase::conveyor->ConveyorDown();
         }
         CommandBase::turret->SetShooterSpeed(CommandBase::oi->GetGamePad()->GetY(F310::kRightStick));
-        CommandBase::turret->Pan(CommandBase::oi->GetGamePad()->GetY(F310::kLeftStick));
+        CommandBase::turret->Pan(CommandBase::oi->GetGamePad()->GetX(F310::kLeftStick));
     }
 };
 
