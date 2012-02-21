@@ -2,21 +2,21 @@
 #include "../Configuration.h"
 
 UndeployRamp::UndeployRamp() {
-    //Requires(giantFour);
+    Requires(giantFour);
 }
 
 // Called just before this Command runs the first time
 void UndeployRamp::Initialize() {
-    //giantFour->GetTimer()->Reset();
-    //giantFour->GetTimer()->Start();
+    giantFour->GetTimer()->Reset();
+    giantFour->GetTimer()->Start();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void UndeployRamp::Execute() {
-    //giantFour->UnlockRamp();
-    //if (giantFour->GetTimer()->Get() > RAMP_LOCK_WAIT_TIME) {
-    //    giantFour->RampUp();
-    //}
+    giantFour->UnlockRamp();
+    if (giantFour->GetTimer()->Get() > RAMP_LOCK_WAIT_TIME) {
+        giantFour->RampUp();
+    }
 }
 
 // Make this return true when this Command no longer needs to run execute()

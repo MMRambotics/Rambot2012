@@ -6,6 +6,7 @@
 #include "Commands/DeployRamp.h"
 #include "Commands/ManualShooter.h"
 #include "Commands/StraightWithJoystick.h"
+#include "Commands/AutomaticShooter.h"
 
 OI::OI() {
     leftStick = new Joystick(LEFT_JOYSTICK_PORT);
@@ -14,10 +15,10 @@ OI::OI() {
     leftArm = new KinectStick(LEFT_ARM_PORT);
     rightArm = new KinectStick(RIGHT_ARM_PORT);
     
-    rollerForwardButton = new GamepadButton(gamePad, F310::kYButton);
+    rollerForwardButton = new GamepadButton(gamePad, F310::kAButton);
     rollerStopButton1 = new GamepadButton(gamePad, F310::kBButton);
     rollerStopButton2 = new GamepadButton(gamePad, F310::kXButton);
-    rollerBackwardButton = new GamepadButton(gamePad, F310::kAButton);
+    rollerBackwardButton = new GamepadButton(gamePad, F310::kYButton);
     rampDeployButton = new GamepadButton(gamePad, F310::kRightBumper);
     rampUndeployButton = new GamepadButton(gamePad, F310::kLeftBumper);
     driveStraightButton = new JoystickButton(leftStick, DRIVE_STRAIGHT_BUTTON);
@@ -29,7 +30,6 @@ OI::OI() {
     rampDeployButton->WhenPressed(new DeployRamp());
     rampUndeployButton->WhenPressed(new UndeployRamp());
     driveStraightButton->WhileHeld(new StraightWithJoystick());
-
 }
 
 Joystick * OI::GetLeftStick() {

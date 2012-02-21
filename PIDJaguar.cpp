@@ -3,14 +3,20 @@
 class PIDJaguar : public PIDOutput {
 	Jaguar *jaguar;
 	float previousOutput;
+	bool reverseOutput;
 public:
-	PIDJaguar(int port) {
+	PIDJaguar(int port, bool reverse) {
 		jaguar = new Jaguar(port);
 		previousOutput = 0.0;
+		reverseOutput = reverse;
 	}
 	
 	void Set(float power) {
-		jaguar->Set(power);
+	    if (reverseOutput) {
+	        jaguar->Set(-power);
+	    } else {
+	        jaguar->Set(power);
+	    }
 	}
 	
 	void PIDWrite(float output) {

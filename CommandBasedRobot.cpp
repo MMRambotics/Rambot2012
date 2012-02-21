@@ -11,8 +11,12 @@ private:
     Command *driveCommand;
     SendableChooser *driveStyle;
     
+    bool previousTrigger;
+    bool currentTrigger;
+      
+    
     virtual void RobotInit() {
-        //NetworkTable::Initialize();
+        NetworkTable::Initialize();
         
         CommandBase::init();
         driveStyle = new SendableChooser();
@@ -20,6 +24,8 @@ private:
         driveStyle->AddObject("Tank",new TankDrive());
         SmartDashboard::GetInstance()->PutData("Drive Style Chooser", driveStyle);
         autonomousCommand = new ExampleCommand();
+        
+        previousTrigger = false;
     }
     
     virtual void AutonomousInit() {
@@ -28,6 +34,7 @@ private:
     
     virtual void AutonomousPeriodic() {
         Scheduler::GetInstance()->Run();
+        CommandBase::drive->UpdateCompass();
     }
     
     virtual void TeleopInit() {
@@ -37,21 +44,25 @@ private:
     }
     
     virtual void TeleopPeriodic() {
+        CommandBase::drive->UpdateCompass();
         Scheduler::GetInstance()->Run();
         
-        if (CommandBase::oi->GetLeftStick()->GetTrigger() || CommandBase::oi->GetRightStick()->GetTrigger()) {
+        currentTrigger = CommandBase::oi->GetRightStick()->GetTrigger();
+
+        if (currentTrigger !=  previousTrigger && currentTrigger == false) {
             CommandBase::drive->SwitchGear();
         }
 
         if (CommandBase::oi->GetGamePad()->GetDPadX()!= 0.0) {
             CommandBase::conveyor->ConveyorStop();
-        } else if (CommandBase::oi->GetGamePad()->GetDPadY()< 0.0) {
+        } else if (CommandBase::oi->GetGamePad()->GetDPadY()> 0.0) {
             CommandBase::conveyor->ConveyorUp();
-        } else if (CommandBase::oi->GetGamePad()->GetDPadY() > 0.0) {
+        } else if (CommandBase::oi->GetGamePad()->GetDPadY() < 0.0) {
             CommandBase::conveyor->ConveyorDown();
         }
         CommandBase::turret->SetShooterSpeed(CommandBase::oi->GetGamePad()->GetY(F310::kRightStick));
-        CommandBase::turret->Pan(CommandBase::oi->GetGamePad()->GetX(F310::kLeftStick));
+        CommandBase::turret->Pan(CommandBase::oi->GetGamePad()->GetX(F310::kLeftStick));  
+        previousTrigger = currentTrigger;
     }
 };
 

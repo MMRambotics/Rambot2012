@@ -24,6 +24,8 @@ public:
 	void StopShooter();
 	void SetRPM(float rpm);
 	void Pan(float value);
+	void Process();
+	void Start();
 };
 
 #endif

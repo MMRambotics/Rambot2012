@@ -43,6 +43,7 @@ public:
 	void SetHighGear();
 	void SetLowGear();
 	void SwitchGear();
+	void UpdateCompass();
 
 };
 

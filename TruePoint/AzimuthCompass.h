@@ -9,6 +9,7 @@ class AzimuthCompass : public PIDSource {
     float refAngle;
 public:
     AzimuthCompass(TruePoint *comp);
+    double GetAngle();
     virtual double PIDGet();
     void SetReference();
 };

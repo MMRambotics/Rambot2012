@@ -11,10 +11,14 @@ Drive::Drive() :
 {
 	victorGroup = new VictorGroup(&leftMotor, &rightMotor);
 	com = new SerialPort(9600);
+	com->SetReadBufferSize(1);
+	com->SetFlowControl(SerialPort::kFlowControl_None);
 	compass = new TruePoint();
+	compass->Start();
     pCompass = new PitchCompass(compass);
 	aCompass = new AzimuthCompass(compass);
 	pidControl = new PIDController(DRIVE_STRAIGHT_P, DRIVE_STRAIGHT_I, DRIVE_STRAIGHT_D, aCompass, victorGroup);
+	shiftersolenoid.Set(DoubleSolenoid::kForward);
 }
     
 void Drive::InitDefaultCommand() {
@@ -23,12 +27,12 @@ void Drive::InitDefaultCommand() {
 
 void Drive::TankDriveFunction(Joystick *leftStick, Joystick *rightStick){
     pidControl->Disable();
-    drive.TankDrive(leftStick,rightStick);
+    drive.TankDrive(-leftStick->GetY(), -rightStick->GetY());
 }
 
 void Drive::TankDriveFunction(float leftValue, float rightValue){
     pidControl->Disable();
-    drive.TankDrive(leftValue, rightValue); 
+    drive.TankDrive(-leftValue, -rightValue); 
 }
 
 void Drive::TankDriveFunction(KinectStick leftArm, KinectStick rightArm){
@@ -38,12 +42,14 @@ void Drive::TankDriveFunction(KinectStick leftArm, KinectStick rightArm){
 
 void Drive::ArcadeDriveFunction(Joystick *joystick){
     pidControl->Disable();
-    float speed = joystick->GetY();
-    float rotate = joystick->GetX();
+    float speed = -joystick->GetY();
+    float rotate = -joystick->GetX();
     drive.ArcadeDrive(speed, rotate);
 }
 
 void Drive::DriveStraight(float speed) {
+    SmartDashboard::GetInstance()->Log(aCompass->GetAngle(), "Compass Angle");
+    SmartDashboard::GetInstance()->Log(aCompass->PIDGet(), "Compass Error");
     victorGroup->SetModeStraight();
     victorGroup->SetSpeed(speed);
     pidControl->Enable();
@@ -64,5 +70,18 @@ void Drive::SwitchGear() {
     } else {
         SetHighGear();
         gearState = kHighGear;
+    }
+}
+
+void Drive::UpdateCompass() {
+    
+    int n = com->GetBytesReceived();
+    SmartDashboard::GetInstance()->Log(n, "Bytes");
+    if (n > 0) {
+        char *buffer = new char[n];
+        com->Read(buffer, n);
+        printf("%d\n", n);
+        compass->AddToBuffer(buffer, n);
+        delete [] buffer;
     }
 }

@@ -5,12 +5,14 @@ class RateEncoder : public PIDSource{
 	int counter;
 	int data[10];
 	float rpm;
+	float multiplier;
 public:
-	RateEncoder(int a_channel, int b_channel, bool reverse_direction) {
+	RateEncoder(int a_channel, int b_channel, bool reverse_direction, float mult) {
 		encoder = new Encoder(a_channel, b_channel, reverse_direction);
 		counter = 0;
 		for(int i = 0; i < 10; i++) data[i] = 0;
 		rpm = 0.0;
+		multiplier = mult;
 	}
 	
 	void Start() {
@@ -22,8 +24,8 @@ public:
 	}
 	
 	void ProcessData() {
-		data[counter++] = encoder->GetRaw();
-		encoder->Reset();
+		data[counter++] = encoder->GetRaw() * multiplier;
+		//encoder->Reset();
 		if (counter > 9) counter = 0;
 		float sum = 0.0;
 		for(int i = 0; i < 10; i++) sum += data[i];
