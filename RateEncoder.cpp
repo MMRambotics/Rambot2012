@@ -24,7 +24,7 @@ public:
 	}
 	
 	void ProcessData() {
-		data[counter++] = encoder->GetRaw() * multiplier;
+		data[counter++] = encoder->GetRaw() * (int) multiplier;
 		//encoder->Reset();
 		if (counter > 9) counter = 0;
 		float sum = 0.0;

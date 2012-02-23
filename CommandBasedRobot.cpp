@@ -13,8 +13,7 @@ private:
     
     bool previousTrigger;
     bool currentTrigger;
-      
-    
+        
     virtual void RobotInit() {
         NetworkTable::Initialize();
         
@@ -34,7 +33,6 @@ private:
     
     virtual void AutonomousPeriodic() {
         Scheduler::GetInstance()->Run();
-        CommandBase::drive->UpdateCompass();
     }
     
     virtual void TeleopInit() {
@@ -44,7 +42,6 @@ private:
     }
     
     virtual void TeleopPeriodic() {
-        CommandBase::drive->UpdateCompass();
         Scheduler::GetInstance()->Run();
         
         currentTrigger = CommandBase::oi->GetRightStick()->GetTrigger();

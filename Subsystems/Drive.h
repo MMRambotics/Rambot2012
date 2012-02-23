@@ -22,12 +22,6 @@ public:
 	Victor rightMotor;
 	Victor leftMotor;
 	RobotDrive drive;
-	VictorGroup *victorGroup;
-	PIDController *pidControl;
-	SerialPort *com;
-	TruePoint *compass;
-	PitchCompass *pCompass;
-	AzimuthCompass *aCompass;
 	
 	DoubleSolenoid shiftersolenoid;
 
@@ -39,11 +33,9 @@ public:
 	void TankDriveFunction(float leftValue, float rightValue);
 	void TankDriveFunction(KinectStick leftArm, KinectStick rightArm);
 	void ArcadeDriveFunction(Joystick *joystick);
-	void DriveStraight(float speed);
 	void SetHighGear();
 	void SetLowGear();
 	void SwitchGear();
-	void UpdateCompass();
 
 };
 
