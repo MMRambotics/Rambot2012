@@ -14,6 +14,7 @@
 #define RIGHT_MOTOR_PORT 6
 #define SHIFTER_SOLENOID_PORT_A 3
 #define SHIFTER_SOLENOID_PORT_B 4
+
 // Roller Subsystem Ports
 #define ROLLER_PORT 1
 
@@ -27,12 +28,12 @@
 #define CONVEYOR_PORT 4
 
 // Turret Subsystem Ports
-#define LEFT_SHOOTER_PORT 5
-#define RIGHT_SHOOTER_PORT 2
-#define LEFT_ENCODER_A_PORT 2
-#define LEFT_ENCODER_B_PORT 3
-#define RIGHT_ENCODER_A_PORT 4
-#define RIGHT_ENCODER_B_PORT 5
-#define PAN_MOTOR_PORT 3
+#define LEFT_SHOOTER_PORT 9// 5
+#define RIGHT_SHOOTER_PORT 8// 2
+#define LEFT_ENCODER_A_PORT 1// 2
+#define LEFT_ENCODER_B_PORT 2// 3
+#define RIGHT_ENCODER_A_PORT 4// 4
+#define RIGHT_ENCODER_B_PORT 3// 5
+#define PAN_MOTOR_PORT 10//3
 
 #endif

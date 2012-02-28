@@ -6,10 +6,10 @@ Drive::Drive() :
     Subsystem("Drive"),
     rightMotor(RIGHT_MOTOR_PORT),
     leftMotor(LEFT_MOTOR_PORT),
-    drive(leftMotor, rightMotor),
-    shiftersolenoid(SHIFTER_SOLENOID_PORT_A, SHIFTER_SOLENOID_PORT_B)
+    drive(leftMotor, rightMotor)//,
+    //shiftersolenoid(SHIFTER_SOLENOID_PORT_A, SHIFTER_SOLENOID_PORT_B)
 {
-    shiftersolenoid.Set(DoubleSolenoid::kForward);
+    //shiftersolenoid.Set(DoubleSolenoid::kForward);
 }
     
 void Drive::InitDefaultCommand() {
@@ -35,11 +35,11 @@ void Drive::ArcadeDriveFunction(Joystick *joystick){
 }
 
 void Drive::SetHighGear() {
-    shiftersolenoid.Set(DoubleSolenoid::kForward);
+    //shiftersolenoid.Set(DoubleSolenoid::kForward);
 }
 
 void Drive::SetLowGear() {
-    shiftersolenoid.Set(DoubleSolenoid::kReverse);
+    //shiftersolenoid.Set(DoubleSolenoid::kReverse);
 }
 
 void Drive::SwitchGear() {

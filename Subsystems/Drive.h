@@ -23,7 +23,7 @@ public:
 	Victor leftMotor;
 	RobotDrive drive;
 	
-	DoubleSolenoid shiftersolenoid;
+	//DoubleSolenoid shiftersolenoid;
 
 	GearMode gearState;
 	

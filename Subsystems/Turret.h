@@ -26,6 +26,7 @@ public:
 	void Pan(float value);
 	void Process();
 	void Start();
+	void Reset();
 };
 
 #endif

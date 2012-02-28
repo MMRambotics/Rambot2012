@@ -3,19 +3,21 @@
 #include "../Commands/ManualShooter.h"
 #include "../Configuration.h"
 #include "../Commands/AutomaticShooter.h"
+ 
+// Encoder spacing should be 15 thou
 
 Turret::Turret() : Subsystem("Turret") {
-	leftShooter = new PIDJaguar(LEFT_SHOOTER_PORT, true);
-	rightShooter = new PIDJaguar(RIGHT_SHOOTER_PORT, true);
-	leftEncoder = new RateEncoder(LEFT_ENCODER_A_PORT, LEFT_ENCODER_B_PORT, false, 1.0);
-	rightEncoder = new RateEncoder(RIGHT_ENCODER_A_PORT, RIGHT_ENCODER_B_PORT, true, 1.0);
+	leftShooter = new PIDJaguar(LEFT_SHOOTER_PORT, false);
+	rightShooter = new PIDJaguar(RIGHT_SHOOTER_PORT, false);
+	leftEncoder = new RateEncoder(LEFT_ENCODER_A_PORT, LEFT_ENCODER_B_PORT, false, 2.0, 0.8);
+	rightEncoder = new RateEncoder(RIGHT_ENCODER_A_PORT, RIGHT_ENCODER_B_PORT, true, 1.0, 1.3333334);
 	leftPIDControl = new PIDController(TURRET_P, TURRET_I, TURRET_D, leftEncoder, leftShooter);
 	rightPIDControl = new PIDController(TURRET_P, TURRET_I, TURRET_D, rightEncoder, rightShooter);
 	panMotor = new Jaguar(PAN_MOTOR_PORT);
 }
     
 void Turret::InitDefaultCommand() {
-    //SetDefaultCommand(new AutomaticShooter());
+    SetDefaultCommand(new AutomaticShooter());
 }
 
 void Turret::SetShooterSpeed(float speed) {
@@ -50,6 +52,8 @@ void Turret::Pan(float value) {
 void Turret::Process() {
     leftEncoder->ProcessData();
     rightEncoder->ProcessData();
+    SmartDashboard::GetInstance()->Log(leftEncoder->GetRPM(), "LeftRate");
+    SmartDashboard::GetInstance()->Log(rightEncoder->GetRPM(), "RightRate");
     SmartDashboard::GetInstance()->Log(leftEncoder->GetCount(), "LeftCount");
     SmartDashboard::GetInstance()->Log(rightEncoder->GetCount(), "RightCount");
 }
@@ -57,4 +61,9 @@ void Turret::Process() {
 void Turret::Start() {
     leftEncoder->Start();
     rightEncoder->Start();
+}
+
+void Turret::Reset() {
+    leftEncoder->Reset();
+    rightEncoder->Reset();
 }

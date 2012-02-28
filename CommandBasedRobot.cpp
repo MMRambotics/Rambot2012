@@ -39,6 +39,8 @@ private:
         autonomousCommand->Cancel();
         driveCommand =  (Command*) driveStyle->GetSelected();
         driveCommand->Start();
+        CommandBase::turret->Reset();
+        CommandBase::turret->Start();
     }
     
     virtual void TeleopPeriodic() {
@@ -57,7 +59,8 @@ private:
         } else if (CommandBase::oi->GetGamePad()->GetDPadY() < 0.0) {
             CommandBase::conveyor->ConveyorDown();
         }
-        CommandBase::turret->SetShooterSpeed(CommandBase::oi->GetGamePad()->GetY(F310::kRightStick));
+        CommandBase::turret->Process();
+        // CommandBase::turret->SetShooterSpeed(CommandBase::oi->GetGamePad()->GetY(F310::kRightStick));
         CommandBase::turret->Pan(CommandBase::oi->GetGamePad()->GetX(F310::kLeftStick));  
         previousTrigger = currentTrigger;
     }

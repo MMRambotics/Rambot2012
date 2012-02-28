@@ -5,8 +5,8 @@
 
 class GiantFour: public Subsystem {
 private:
-    DoubleSolenoid giantfoursolenoid;
-    DoubleSolenoid ramplocksolenoid;
+    //DoubleSolenoid giantfoursolenoid;
+    //DoubleSolenoid ramplocksolenoid;
     Timer *timer;
 public:
     GiantFour();

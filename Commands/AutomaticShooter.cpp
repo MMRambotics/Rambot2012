@@ -14,11 +14,11 @@ void AutomaticShooter::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void AutomaticShooter::Execute() {
 	turret->Process();
-	if (oi->GetLeftStick()->GetRawButton(11)) {
-	    turret->SetRPM(1500);	    
+	/*if (oi->GetLeftStick()->GetRawButton(11)) {
+	    turret->SetRPM(1000);	    
 	} else if (oi->GetLeftStick()->GetRawButton(10)) {
-	    turret->SetRPM(2000);
-	} 
+	    turret->SetRPM(1500);
+	}*/ 
 }
 
 // Make this return true when this Command no longer needs to run execute()
