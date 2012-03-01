@@ -18,15 +18,11 @@ OI::OI() {
     conveyorStopButton1 = new GamepadButton(gamePad, F310::kBButton);
     conveyorStopButton2 = new GamepadButton(gamePad, F310::kXButton);
     conveyorDownButton = new GamepadButton(gamePad, F310::kYButton);
-    rampDeployButton = new GamepadButton(gamePad, F310::kRightBumper);
-    rampUndeployButton = new GamepadButton(gamePad, F310::kLeftBumper);
         
     conveyorUpButton->WhenPressed(new MoveConveyorUp());
     conveyorStopButton1->WhenPressed(new StopConveyor());    
     conveyorStopButton2->WhenPressed(new StopConveyor());    
     conveyorDownButton->WhenPressed(new MoveConveyorDown());    
-    rampDeployButton->WhenPressed(new DeployRamp());
-    rampUndeployButton->WhenPressed(new UndeployRamp());
 }
 
 Joystick * OI::GetLeftStick() {

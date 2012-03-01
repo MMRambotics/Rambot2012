@@ -12,8 +12,10 @@ private:
     Command *driveCommand;
     SendableChooser *driveStyle;
     
-    bool previousTrigger;
-    bool currentTrigger;
+    bool previousShiftTrigger;
+    bool currentShiftTrigger;
+    bool previousRampTrigger;
+    bool currentRampTrigger;
         
     virtual void RobotInit() {
         NetworkTable::Initialize();
@@ -25,7 +27,8 @@ private:
         SmartDashboard::GetInstance()->PutData("Drive Style Chooser", driveStyle);
         autonomousCommand = new KinectTankDrive();
         
-        previousTrigger = false;
+        previousShiftTrigger = false;
+        previousRampTrigger = false;
     }
     
     virtual void AutonomousInit() {
@@ -46,10 +49,15 @@ private:
     virtual void TeleopPeriodic() {
         Scheduler::GetInstance()->Run();
         
-        currentTrigger = CommandBase::oi->GetRightStick()->GetTrigger();
-
-        if (currentTrigger !=  previousTrigger && currentTrigger == false) {
+        currentShiftTrigger = CommandBase::oi->GetRightStick()->GetRawButton(3);
+        if (currentShiftTrigger !=  previousShiftTrigger && currentShiftTrigger == false) {
             CommandBase::drive->SwitchGear();
+        }
+        
+        currentRampTrigger = CommandBase::oi->GetLeftStick()->GetRawButton(3);
+        if (currentRampTrigger != previousRampTrigger && currentRampTrigger == false) {
+            if (CommandBase::giantFour->GetState() == GiantFour::kRampDown) CommandBase::giantFour->RampUp();
+            else CommandBase::giantFour->RampDown();
         }
 
         if (CommandBase::oi->GetGamePad()->GetDPadX()!= 0.0) {
@@ -62,7 +70,9 @@ private:
         //CommandBase::turret->Process();
         //CommandBase::turret->SetShooterSpeed(0.0);
         CommandBase::turret->Pan(CommandBase::oi->GetGamePad()->GetX(F310::kLeftStick));  
-        previousTrigger = currentTrigger;
+        
+        previousShiftTrigger = currentShiftTrigger;
+        previousRampTrigger = currentRampTrigger;
     }
 };
 

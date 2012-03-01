@@ -17,8 +17,6 @@ private:
     GamepadButton *conveyorStopButton1;
     GamepadButton *conveyorStopButton2;
     GamepadButton *conveyorDownButton;
-    GamepadButton *rampDeployButton;
-    GamepadButton *rampUndeployButton;
     Kinect *kinect;
 public:
     OI();

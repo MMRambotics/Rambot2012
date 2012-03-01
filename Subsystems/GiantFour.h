@@ -5,10 +5,16 @@
 
 class GiantFour: public Subsystem {
 private:
-    //DoubleSolenoid giantfoursolenoid;
-    //DoubleSolenoid ramplocksolenoid;
+    DoubleSolenoid giantfoursolenoid;
+    DoubleSolenoid ramplocksolenoid;
     Timer *timer;
 public:
+    typedef enum
+    {
+        kRampDown,
+        kRampUp,
+    } RampMode;
+    RampMode rampState;
     GiantFour();
     void InitDefaultCommand();
     void LockRamp();
@@ -16,6 +22,7 @@ public:
     void RampUp();
     void RampDown();
     Timer * GetTimer();
+    RampMode GetState();
 };
 
 #endif
