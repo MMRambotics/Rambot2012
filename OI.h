@@ -13,12 +13,13 @@ private:
     F310 *gamePad;
     KinectStick *leftArm;
     KinectStick *rightArm;
-    GamepadButton *rollerForwardButton;
-    GamepadButton *rollerStopButton1;
-    GamepadButton *rollerStopButton2;
-    GamepadButton *rollerBackwardButton;
+    GamepadButton *conveyorUpButton;
+    GamepadButton *conveyorStopButton1;
+    GamepadButton *conveyorStopButton2;
+    GamepadButton *conveyorDownButton;
     GamepadButton *rampDeployButton;
     GamepadButton *rampUndeployButton;
+    Kinect *kinect;
 public:
     OI();
     Joystick * GetLeftStick();
@@ -26,6 +27,7 @@ public:
     F310 * GetGamePad();
     KinectStick * GetLeftArm();
     KinectStick * GetRightArm();
+    Kinect * GetKinect();
     
 };
 

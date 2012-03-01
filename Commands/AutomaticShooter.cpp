@@ -8,7 +8,7 @@ AutomaticShooter::AutomaticShooter() {
 void AutomaticShooter::Initialize() {
     turret->Start();
 	turret->EnablePIDControl();
-	turret->SetRPM(1000);
+	turret->SetRPM(1500);
 }
 
 // Called repeatedly when this Command is scheduled to run

@@ -1,33 +1,30 @@
-#include "ManualShooter.h"
-#include "../Joystick/F310.h"
+#include "MoveConveyorDown.h"
 
-ManualShooter::ManualShooter() {
-	Requires(turret);
+MoveConveyorDown::MoveConveyorDown() {
+	Requires(conveyor);
 }
 
 // Called just before this Command runs the first time
-void ManualShooter::Initialize() {
-    turret->Reset();
-	turret->Start();
+void MoveConveyorDown::Initialize() {
+	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ManualShooter::Execute() {
-	turret->SetShooterSpeed(0.2);
-	turret->Process();
+void MoveConveyorDown::Execute() {
+	conveyor->ConveyorDown();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ManualShooter::IsFinished() {
+bool MoveConveyorDown::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void ManualShooter::End() {
+void MoveConveyorDown::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ManualShooter::Interrupted() {
+void MoveConveyorDown::Interrupted() {
 }

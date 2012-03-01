@@ -4,6 +4,7 @@
 #include "CommandBase.h"
 #include "Commands/ArcadeDrive.h"
 #include "Commands/TankDrive.h"
+#include "Commands/KinectTankDrive.h"
 
 class CommandBasedRobot : public IterativeRobot {
 private:
@@ -22,7 +23,7 @@ private:
         driveStyle->AddDefault("Arcade",new ArcadeDrive());
         driveStyle->AddObject("Tank",new TankDrive());
         SmartDashboard::GetInstance()->PutData("Drive Style Chooser", driveStyle);
-        autonomousCommand = new ExampleCommand();
+        autonomousCommand = new KinectTankDrive();
         
         previousTrigger = false;
     }
@@ -38,7 +39,6 @@ private:
     virtual void TeleopInit() {
         autonomousCommand->Cancel();
         driveCommand =  (Command*) driveStyle->GetSelected();
-        driveCommand->Start();
         CommandBase::turret->Reset();
         CommandBase::turret->Start();
     }
@@ -53,14 +53,14 @@ private:
         }
 
         if (CommandBase::oi->GetGamePad()->GetDPadX()!= 0.0) {
-            CommandBase::conveyor->ConveyorStop();
+            CommandBase::roller->rollerStop();
         } else if (CommandBase::oi->GetGamePad()->GetDPadY()> 0.0) {
-            CommandBase::conveyor->ConveyorUp();
+            CommandBase::roller->rollerForward();
         } else if (CommandBase::oi->GetGamePad()->GetDPadY() < 0.0) {
-            CommandBase::conveyor->ConveyorDown();
+            CommandBase::roller->rollerBackward();
         }
-        CommandBase::turret->Process();
-        // CommandBase::turret->SetShooterSpeed(CommandBase::oi->GetGamePad()->GetY(F310::kRightStick));
+        //CommandBase::turret->Process();
+        //CommandBase::turret->SetShooterSpeed(0.0);
         CommandBase::turret->Pan(CommandBase::oi->GetGamePad()->GetX(F310::kLeftStick));  
         previousTrigger = currentTrigger;
     }

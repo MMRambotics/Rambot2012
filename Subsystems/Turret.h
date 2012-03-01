@@ -7,7 +7,6 @@
 
 class Turret: public Subsystem {
 private:
-
 	PIDJaguar *leftShooter;
 	PIDJaguar *rightShooter;
 	Jaguar *panMotor;

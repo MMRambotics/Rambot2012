@@ -24,7 +24,7 @@ void Drive::TankDriveFunction(float leftValue, float rightValue){
     drive.TankDrive(-leftValue, -rightValue); 
 }
 
-void Drive::TankDriveFunction(KinectStick leftArm, KinectStick rightArm){
+void Drive::TankDriveFunction(KinectStick *leftArm, KinectStick *rightArm){
     drive.TankDrive(leftArm, rightArm);
 }
 

@@ -8,6 +8,7 @@ public:
 	PIDJaguar(int port, bool reverse) {
 		jaguar = new Jaguar(port);
 		previousOutput = 0.0;
+		reverseOutput = reverse;
 	}
 	
 	void Set(float power) {

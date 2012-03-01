@@ -7,13 +7,15 @@
 // Encoder spacing should be 15 thou
 
 Turret::Turret() : Subsystem("Turret") {
-	leftShooter = new PIDJaguar(LEFT_SHOOTER_PORT, false);
+	leftShooter = new PIDJaguar(LEFT_SHOOTER_PORT, true);
 	rightShooter = new PIDJaguar(RIGHT_SHOOTER_PORT, false);
-	leftEncoder = new RateEncoder(LEFT_ENCODER_A_PORT, LEFT_ENCODER_B_PORT, false, 2.0, 0.8);
-	rightEncoder = new RateEncoder(RIGHT_ENCODER_A_PORT, RIGHT_ENCODER_B_PORT, true, 1.0, 1.3333334);
-	leftPIDControl = new PIDController(TURRET_P, TURRET_I, TURRET_D, leftEncoder, leftShooter);
-	rightPIDControl = new PIDController(TURRET_P, TURRET_I, TURRET_D, rightEncoder, rightShooter);
+	leftEncoder = new RateEncoder(LEFT_ENCODER_A_PORT, LEFT_ENCODER_B_PORT, false, 1.0);
+	rightEncoder = new RateEncoder(RIGHT_ENCODER_A_PORT, RIGHT_ENCODER_B_PORT, true, 2.0);
+	leftPIDControl = new PIDController(TURRET_P_LEFT, TURRET_I_LEFT, TURRET_D_LEFT, leftEncoder, leftShooter);
+	rightPIDControl = new PIDController(TURRET_P_RIGHT, TURRET_I_RIGHT, TURRET_D_RIGHT, rightEncoder, rightShooter);
 	panMotor = new Jaguar(PAN_MOTOR_PORT);
+	leftPIDControl->SetTolerance(1.0);
+	rightPIDControl->SetTolerance(1.0);
 }
     
 void Turret::InitDefaultCommand() {
@@ -22,7 +24,7 @@ void Turret::InitDefaultCommand() {
 
 void Turret::SetShooterSpeed(float speed) {
     leftShooter->Set(speed);
-    rightShooter->Set(-speed);
+    rightShooter->Set(speed);
 }
 
 void Turret::EnablePIDControl() {
@@ -41,7 +43,7 @@ void Turret::StopShooter() {
 }
 
 void Turret::SetRPM(float rpm) {
-    leftPIDControl->SetSetpoint(-rpm);
+    leftPIDControl->SetSetpoint(rpm);
     rightPIDControl->SetSetpoint(rpm);    
 }
 
@@ -56,6 +58,9 @@ void Turret::Process() {
     SmartDashboard::GetInstance()->Log(rightEncoder->GetRPM(), "RightRate");
     SmartDashboard::GetInstance()->Log(leftEncoder->GetCount(), "LeftCount");
     SmartDashboard::GetInstance()->Log(rightEncoder->GetCount(), "RightCount");
+    SmartDashboard::GetInstance()->Log(rightPIDControl->GetError(), "RightError");
+    SmartDashboard::GetInstance()->Log(leftPIDControl->GetError(), "LeftError");
+    SmartDashboard::GetInstance()->Log(rightPIDControl->GetSetpoint(), "Setpoint");
 }
 
 void Turret::Start() {

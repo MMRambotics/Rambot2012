@@ -1,33 +1,30 @@
-#include "ManualShooter.h"
-#include "../Joystick/F310.h"
+#include "KinectTankDrive.h"
 
-ManualShooter::ManualShooter() {
-	Requires(turret);
+KinectTankDrive::KinectTankDrive() {
+	Requires(drive);
 }
 
 // Called just before this Command runs the first time
-void ManualShooter::Initialize() {
-    turret->Reset();
-	turret->Start();
+void KinectTankDrive::Initialize() {
+	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ManualShooter::Execute() {
-	turret->SetShooterSpeed(0.2);
-	turret->Process();
+void KinectTankDrive::Execute() {
+	drive->TankDriveFunction(oi->GetLeftArm(),oi->GetRightArm());
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ManualShooter::IsFinished() {
+bool KinectTankDrive::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void ManualShooter::End() {
+void KinectTankDrive::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ManualShooter::Interrupted() {
+void KinectTankDrive::Interrupted() {
 }

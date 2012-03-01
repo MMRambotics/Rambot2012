@@ -31,7 +31,7 @@ public:
 	void InitDefaultCommand();
 	void TankDriveFunction(Joystick *leftJoystick, Joystick *rightJoystick);
 	void TankDriveFunction(float leftValue, float rightValue);
-	void TankDriveFunction(KinectStick leftArm, KinectStick rightArm);
+	void TankDriveFunction(KinectStick *leftArm, KinectStick *rightArm);
 	void ArcadeDriveFunction(Joystick *joystick);
 	void SetHighGear();
 	void SetLowGear();

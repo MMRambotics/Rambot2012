@@ -1,7 +1,7 @@
 #include "OI.h"
-#include "Commands/RollerForward.h"
-#include "Commands/RollerStop.h"
-#include "Commands/RollerBackward.h"
+#include "Commands/MoveConveyorUp.h"
+#include "Commands/StopConveyor.h"
+#include "Commands/MoveConveyorDown.h"
 #include "Commands/UndeployRamp.h"
 #include "Commands/DeployRamp.h"
 #include "Commands/ManualShooter.h"
@@ -14,17 +14,17 @@ OI::OI() {
     leftArm = new KinectStick(LEFT_ARM_PORT);
     rightArm = new KinectStick(RIGHT_ARM_PORT);
     
-    rollerForwardButton = new GamepadButton(gamePad, F310::kAButton);
-    rollerStopButton1 = new GamepadButton(gamePad, F310::kBButton);
-    rollerStopButton2 = new GamepadButton(gamePad, F310::kXButton);
-    rollerBackwardButton = new GamepadButton(gamePad, F310::kYButton);
+    conveyorUpButton = new GamepadButton(gamePad, F310::kAButton);
+    conveyorStopButton1 = new GamepadButton(gamePad, F310::kBButton);
+    conveyorStopButton2 = new GamepadButton(gamePad, F310::kXButton);
+    conveyorDownButton = new GamepadButton(gamePad, F310::kYButton);
     rampDeployButton = new GamepadButton(gamePad, F310::kRightBumper);
     rampUndeployButton = new GamepadButton(gamePad, F310::kLeftBumper);
         
-    rollerForwardButton->WhenPressed(new RollerForward());
-    rollerStopButton1->WhenPressed(new RollerStop());    
-    rollerStopButton2->WhenPressed(new RollerStop());    
-    rollerBackwardButton->WhenPressed(new RollerBackward());    
+    conveyorUpButton->WhenPressed(new MoveConveyorUp());
+    conveyorStopButton1->WhenPressed(new StopConveyor());    
+    conveyorStopButton2->WhenPressed(new StopConveyor());    
+    conveyorDownButton->WhenPressed(new MoveConveyorDown());    
     rampDeployButton->WhenPressed(new DeployRamp());
     rampUndeployButton->WhenPressed(new UndeployRamp());
 }
@@ -47,4 +47,8 @@ KinectStick * OI::GetLeftArm() {
 
 KinectStick * OI::GetRightArm() {
     return rightArm;
+}
+
+Kinect * OI::GetKinect() {
+    return kinect;
 }
