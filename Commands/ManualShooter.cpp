@@ -13,7 +13,7 @@ void ManualShooter::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ManualShooter::Execute() {
-	turret->SetShooterSpeed(0.2);
+	turret->SetShooterSpeed(-oi->GetGamePad()->GetY(F310::kRightStick));
 	turret->Process();
 }
 

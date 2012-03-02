@@ -19,7 +19,7 @@ Turret::Turret() : Subsystem("Turret") {
 }
     
 void Turret::InitDefaultCommand() {
-    SetDefaultCommand(new AutomaticShooter());
+    SetDefaultCommand(new ManualShooter());
 }
 
 void Turret::SetShooterSpeed(float speed) {

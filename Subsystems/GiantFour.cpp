@@ -7,6 +7,7 @@ GiantFour::GiantFour():
     ramplocksolenoid(RAMP_LOCK_SOLENOID_A_PORT, RAMP_LOCK_SOLENOID_B_PORT)
 {
     timer = new Timer();
+    RampUp();
 }
     
 void GiantFour::InitDefaultCommand() {

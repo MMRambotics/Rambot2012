@@ -11,12 +11,11 @@ Roller::Roller() :
 }
     
 void Roller::InitDefaultCommand() {
-    SetDefaultCommand(new RollerStop());
+    
 }
 
 void Roller::rollerForward(){
-    rollerVictor.Set(ROLLER_SPEED);
-    
+    rollerVictor.Set(ROLLER_SPEED);  
 }
 
 void Roller::rollerStop(){

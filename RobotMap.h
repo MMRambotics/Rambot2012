@@ -1,6 +1,10 @@
 #ifndef ROBOTMAP_H
 #define ROBOTMAP_H
 
+// Compressor Ports
+#define PRESSURE_SWITCH_PORT 1
+#define COMPRESSOR_RELAY_PORT 3
+
 // Operator Interface Ports
 #define LEFT_JOYSTICK_PORT 1
 #define RIGHT_JOYSTICK_PORT 2
@@ -28,12 +32,12 @@
 #define CONVEYOR_PORT 4
 
 // Turret Subsystem Ports
-#define LEFT_SHOOTER_PORT 9// 5
-#define RIGHT_SHOOTER_PORT 8// 2
-#define LEFT_ENCODER_A_PORT 1// 2
-#define LEFT_ENCODER_B_PORT 2// 3
-#define RIGHT_ENCODER_A_PORT 4// 4
-#define RIGHT_ENCODER_B_PORT 3// 5
-#define PAN_MOTOR_PORT 10//3
+#define LEFT_SHOOTER_PORT 2
+#define RIGHT_SHOOTER_PORT 5
+#define LEFT_ENCODER_A_PORT 2
+#define LEFT_ENCODER_B_PORT 3
+#define RIGHT_ENCODER_A_PORT 4
+#define RIGHT_ENCODER_B_PORT 5
+#define PAN_MOTOR_PORT 3
 
 #endif

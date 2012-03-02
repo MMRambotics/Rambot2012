@@ -2,7 +2,7 @@
 #define CONFIGURATION_H
 
 #define ROLLER_SPEED 0.5
-#define RAMP_LOCK_WAIT_TIME 2.0
+#define RAMP_LOCK_WAIT_TIME 1.0
 #define CONVEYOR_SPEED 0.5
 
 // PID Constants for Driving Straight

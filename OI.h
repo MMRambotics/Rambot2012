@@ -18,6 +18,8 @@ private:
     GamepadButton *conveyorStopButton2;
     GamepadButton *conveyorDownButton;
     Kinect *kinect;
+    JoystickButton *rampDeployButton;
+    JoystickButton *rampUndeployButton;
 public:
     OI();
     Joystick * GetLeftStick();

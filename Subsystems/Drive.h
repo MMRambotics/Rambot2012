@@ -23,7 +23,7 @@ public:
 	Victor leftMotor;
 	RobotDrive drive;
 	
-	//DoubleSolenoid shiftersolenoid;
+	DoubleSolenoid shiftersolenoid;
 
 	GearMode gearState;
 	
@@ -36,6 +36,7 @@ public:
 	void SetHighGear();
 	void SetLowGear();
 	void SwitchGear();
+	GearMode GetState();
 
 };
 
