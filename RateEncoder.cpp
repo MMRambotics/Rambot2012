@@ -34,7 +34,7 @@ public:
 		float sum = 0.0;
 		for(int i = 0; i < 10; i++) sum += data[i];
 		sum /= 10.0;
-		rpm = (sum / 0.02) / 24;
+		rpm = (sum / 0.02) / 12; // 24 for 1440 count
 	}
 	
 	float GetRPM() {

@@ -72,12 +72,12 @@ public:
     virtual void TeleopPeriodic() {
         
         
-        currentShiftTrigger = CommandBase::oi->GetRightStick()->GetRawButton(3);
+        currentShiftTrigger = CommandBase::oi->GetLeftStick()->GetRawButton(1);
         if (currentShiftTrigger !=  previousShiftTrigger && currentShiftTrigger == false) {
             CommandBase::drive->SwitchGear();
         }
         
-        currentRampTrigger = CommandBase::oi->GetLeftStick()->GetRawButton(3);
+        //currentRampTrigger = CommandBase::oi->GetLeftStick()->GetRawButton(3);
         /*
         if (currentRampTrigger != previousRampTrigger && currentRampTrigger == false) {
             if (CommandBase::giantFour->GetState() == GiantFour::kRampDown) {
@@ -87,7 +87,6 @@ public:
                 rampUp->Start();  
             }
         }*/
-        
 
         /*if (CommandBase::oi->GetGamePad()->GetDPadX()!= 0.0) {
             CommandBase::roller->rollerStop();

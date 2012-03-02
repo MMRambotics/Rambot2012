@@ -11,7 +11,7 @@ void ArcadeDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ArcadeDrive::Execute() {
-    drive->ArcadeDriveFunction(oi->GetRightStick());
+    drive->ArcadeDriveFunction(oi->GetLeftStick());
 }
 
 // Make this return true when this Command no longer needs to run execute()

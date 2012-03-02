@@ -37,19 +37,19 @@ void Drive::ArcadeDriveFunction(Joystick *joystick){
 
 void Drive::SetHighGear() {
     shiftersolenoid.Set(DoubleSolenoid::kForward);
+    gearState = kHighGear;
 }
 
 void Drive::SetLowGear() {
     shiftersolenoid.Set(DoubleSolenoid::kReverse);
+    gearState = kLowGear;
 }
 
 void Drive::SwitchGear() {  
     if (gearState == kHighGear) {
         SetLowGear();
-        gearState = kLowGear;
     } else {
         SetHighGear();
-        gearState = kHighGear;
     }
 }
 
