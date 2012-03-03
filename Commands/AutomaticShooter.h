@@ -9,6 +9,13 @@
  * @author Mike
  */
 class AutomaticShooter: public CommandBase {
+    float rpmSetpoint;
+    typedef enum
+    {
+        kEnabled,
+        kDisabled,
+    } ShooterStatus;
+    ShooterStatus status;
 public:
 	AutomaticShooter();
 	virtual void Initialize();

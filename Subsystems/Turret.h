@@ -14,6 +14,7 @@ private:
 	RateEncoder *rightEncoder;
 	PIDController *leftPIDControl;
 	PIDController *rightPIDControl;
+	float setpoint;
 public:
 	Turret();
 	void InitDefaultCommand();
@@ -26,6 +27,7 @@ public:
 	void Process();
 	void Start();
 	void Reset();
+	bool AtSetpoint();
 };
 
 #endif

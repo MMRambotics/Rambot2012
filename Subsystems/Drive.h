@@ -19,9 +19,10 @@ public:
         kHighGear,
     } GearMode;
     
-	Victor rightMotor;
-	Victor leftMotor;
-	RobotDrive drive;
+	Victor *rightMotor;
+	Victor *leftMotor;
+	VictorGroup *victorGroup;
+	RobotDrive *drive;
 	
 	DoubleSolenoid shiftersolenoid;
 
@@ -37,7 +38,7 @@ public:
 	void SetLowGear();
 	void SwitchGear();
 	GearMode GetState();
-
+	void DriveStraight(float speed);
 };
 
 #endif

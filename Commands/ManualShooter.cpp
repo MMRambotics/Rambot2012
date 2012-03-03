@@ -9,6 +9,7 @@ ManualShooter::ManualShooter() {
 void ManualShooter::Initialize() {
     turret->Reset();
 	turret->Start();
+	turret->DisablePIDControl();
 }
 
 // Called repeatedly when this Command is scheduled to run

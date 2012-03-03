@@ -16,6 +16,7 @@ Turret::Turret() : Subsystem("Turret") {
 	panMotor = new Jaguar(PAN_MOTOR_PORT);
 	leftPIDControl->SetTolerance(1.0);
 	rightPIDControl->SetTolerance(1.0);
+	setpoint = 0.0;
 }
     
 void Turret::InitDefaultCommand() {
@@ -44,7 +45,8 @@ void Turret::StopShooter() {
 
 void Turret::SetRPM(float rpm) {
     leftPIDControl->SetSetpoint(rpm);
-    rightPIDControl->SetSetpoint(rpm);    
+    rightPIDControl->SetSetpoint(rpm); 
+    setpoint = rpm;
 }
 
 void Turret::Pan(float value) {
@@ -55,7 +57,7 @@ void Turret::Process() {
     leftEncoder->ProcessData();
     rightEncoder->ProcessData();
     SmartDashboard::GetInstance()->Log(leftEncoder->GetRPM(), "LeftRate");
-    SmartDashboard::GetInstance()->Log(rightEncoder->GetRPM(), "RightRate");
+    SmartDashboard::GetInstance()->Log(rightEncoder->GetRPM(), "RightRate");    
     SmartDashboard::GetInstance()->Log(leftEncoder->GetCount(), "LeftCount");
     SmartDashboard::GetInstance()->Log(rightEncoder->GetCount(), "RightCount");
     SmartDashboard::GetInstance()->Log(rightPIDControl->GetError(), "RightError");
@@ -71,4 +73,18 @@ void Turret::Start() {
 void Turret::Reset() {
     leftEncoder->Reset();
     rightEncoder->Reset();
+}
+
+bool Turret::AtSetpoint() {
+    float leftError = setpoint - leftEncoder->GetRPM();
+    float rightError = setpoint - rightEncoder->GetRPM();
+    if (leftError < 0) leftError *= -1;
+    if (rightError < 0) rightError *= -1;
+    
+    
+    if (rightError < TOLERANCE && leftError < TOLERANCE) {
+        return true;
+    }
+    
+    return false;
 }

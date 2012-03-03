@@ -14,8 +14,8 @@ OI::OI() {
     leftArm = new KinectStick(LEFT_ARM_PORT);
     rightArm = new KinectStick(RIGHT_ARM_PORT);
     
-    rampDeployButton = new JoystickButton(leftStick, 3);
-    rampUndeployButton = new JoystickButton(leftStick, 2);
+    rampDeployButton = new GamepadButton(gamePad, F310::kXButton);
+    rampUndeployButton = new GamepadButton(gamePad, F310::kBButton);
            
     rampDeployButton->WhenPressed(new DeployRamp());
     rampUndeployButton->WhenPressed(new UndeployRamp());

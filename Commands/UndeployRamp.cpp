@@ -13,9 +13,15 @@ void UndeployRamp::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void UndeployRamp::Execute() {
-    giantFour->UnlockRamp();
+    giantFour->RampDown();
+    if (giantFour->GetTimer()->Get() > RAMP_LOCK_WAIT_TIME / 2.0) {
+        giantFour->UnlockRamp();
+    }
     if (giantFour->GetTimer()->Get() > RAMP_LOCK_WAIT_TIME) {
         giantFour->RampUp();
+    }
+    if (giantFour->GetTimer()->Get() > RAMP_LOCK_WAIT_TIME * 2){
+        giantFour->LockRamp();
     }
 }
 

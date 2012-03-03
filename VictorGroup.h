@@ -4,6 +4,7 @@
 #include "WPILib.h"
 
 class VictorGroup : public PIDOutput {
+public:
     enum Type {STRAIGHT, TURN};
     
     Victor *leftMotor;
@@ -11,7 +12,6 @@ class VictorGroup : public PIDOutput {
     float defaultSpeed;
     Type mode;
     
-public:
     VictorGroup(Victor *leftVictor, Victor *rightVictor, Type type = TURN);
     virtual void PIDWrite(float output);
     void SetSpeed(float speed);

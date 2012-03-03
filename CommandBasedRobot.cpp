@@ -54,12 +54,12 @@ public:
     }
     
     virtual void AutonomousInit() {
-        autonomousCommand = (Command*) driveStyle->GetSelected();
-        autonomousCommand->Start();
+        autonomousCommand = (Command*) autoMode->GetSelected();
+        //autonomousCommand->Start();
     }
     
     virtual void AutonomousPeriodic() {
-        Scheduler::GetInstance()->Run();
+        //Scheduler::GetInstance()->Run();
     }
     
     virtual void TeleopInit() {

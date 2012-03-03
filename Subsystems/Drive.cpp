@@ -3,14 +3,15 @@
 #include "../Commands/ArcadeDrive.h"
 
 Drive::Drive() : 
-    Subsystem("Drive"),
-    rightMotor(RIGHT_MOTOR_PORT),
-    leftMotor(LEFT_MOTOR_PORT),
-    drive(leftMotor, rightMotor),
+    Subsystem("Drive"),    
     shiftersolenoid(SHIFTER_SOLENOID_PORT_A, SHIFTER_SOLENOID_PORT_B)
 {
+    rightMotor = new Victor(RIGHT_MOTOR_PORT);
+    leftMotor = new Victor(LEFT_MOTOR_PORT);
+    drive = new RobotDrive(leftMotor, rightMotor);
     shiftersolenoid.Set(DoubleSolenoid::kForward);
     SetHighGear();
+    victorGroup = new VictorGroup(leftMotor, rightMotor, VictorGroup::STRAIGHT);
 }
     
 void Drive::InitDefaultCommand() {
@@ -18,21 +19,21 @@ void Drive::InitDefaultCommand() {
 }
 
 void Drive::TankDriveFunction(Joystick *leftStick, Joystick *rightStick){
-    drive.TankDrive(-leftStick->GetY(), -rightStick->GetY());
+    drive->TankDrive(-leftStick->GetY(), -rightStick->GetY());
 }
 
 void Drive::TankDriveFunction(float leftValue, float rightValue){
-    drive.TankDrive(-leftValue, -rightValue); 
+    drive->TankDrive(-leftValue, -rightValue); 
 }
 
 void Drive::TankDriveFunction(KinectStick *leftArm, KinectStick *rightArm){
-    drive.TankDrive(leftArm, rightArm);
+    drive->TankDrive(leftArm, rightArm);
 }
 
 void Drive::ArcadeDriveFunction(Joystick *joystick){
     float speed = -joystick->GetY();
     float rotate = -joystick->GetX();
-    drive.ArcadeDrive(speed, rotate);
+    drive->ArcadeDrive(speed, rotate);
 }
 
 void Drive::SetHighGear() {
@@ -55,4 +56,8 @@ void Drive::SwitchGear() {
 
 Drive::GearMode Drive::GetState() {
     return gearState;
+}
+
+void Drive::DriveStraight(float speed) {
+    
 }
