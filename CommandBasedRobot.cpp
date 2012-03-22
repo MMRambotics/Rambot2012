@@ -5,7 +5,6 @@
 #include "Commands/ArcadeDrive.h"
 #include "Commands/TankDrive.h"
 #include "Commands/KinectTankDrive.h"
-#include "Commands/Autonomous.h"
 #include "Commands/DeployRamp.h"
 #include "Commands/UndeployRamp.h"
 
@@ -13,7 +12,6 @@ class CommandBasedRobot : public IterativeRobot {
 private:
     Compressor *compressor;
     
-    Command *autonomousCommand;
     Command *driveCommand;
     SendableChooser *driveStyle;
     SendableChooser *autoMode;
@@ -37,15 +35,12 @@ public:
         autoMode = new SendableChooser();
         driveStyle->AddDefault("Arcade",new ArcadeDrive());
         driveStyle->AddObject("Tank",new TankDrive());
-        autoMode->AddDefault("Autonomous", new Autonomous());
-        autoMode->AddObject("Hybrid", new KinectTankDrive());
         
         previousShiftTrigger = false;
         previousRampTrigger = false;
         isFourState = false;
         fourStateIndex = 0;
-        
-        autonomousCommand = new Autonomous();
+     
     }
     virtual void RobotInit() {
         NetworkTable::Initialize();
@@ -54,16 +49,13 @@ public:
     }
     
     virtual void AutonomousInit() {
-        autonomousCommand = (Command*) autoMode->GetSelected();
-        //autonomousCommand->Start();
+
     }
     
     virtual void AutonomousPeriodic() {
-        //Scheduler::GetInstance()->Run();
     }
     
     virtual void TeleopInit() {
-        autonomousCommand->Cancel();
         driveCommand =  (Command*) driveStyle->GetSelected();
         CommandBase::turret->Reset();
         CommandBase::turret->Start();

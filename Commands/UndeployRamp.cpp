@@ -20,7 +20,7 @@ void UndeployRamp::Execute() {
     if (giantFour->GetTimer()->Get() > RAMP_LOCK_WAIT_TIME) {
         giantFour->RampUp();
     }
-    if (giantFour->GetTimer()->Get() > RAMP_LOCK_WAIT_TIME * 2){
+    if (giantFour->GetTimer()->Get() > RAMP_LOCK_WAIT_TIME * 6){
         giantFour->LockRamp();
     }
 }
