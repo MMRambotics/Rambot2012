@@ -17,19 +17,23 @@ void GiantFour::InitDefaultCommand() {
 void GiantFour::RampUp() {
     giantfoursolenoid.Set(DoubleSolenoid::kForward);
     rampState = kRampUp;
+    SmartDashboard::GetInstance()->Log("RampUp", "RampStatus");
 }
 
 void GiantFour::RampDown() {
     giantfoursolenoid.Set(DoubleSolenoid::kReverse);
     rampState = kRampDown;
+    SmartDashboard::GetInstance()->Log("RampDown", "RampStatus");
 }
 
 void GiantFour::LockRamp() {
     ramplocksolenoid.Set(DoubleSolenoid::kForward);
+    SmartDashboard::GetInstance()->Log("Locked", "LockStatus");
 }
 
 void GiantFour::UnlockRamp() {
     ramplocksolenoid.Set(DoubleSolenoid::kReverse);
+    SmartDashboard::GetInstance()->Log("Unlocked", "LockStatus");
 }
 
 GiantFour::RampMode GiantFour::GetState() {

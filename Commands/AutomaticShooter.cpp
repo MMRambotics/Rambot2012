@@ -19,8 +19,7 @@ void AutomaticShooter::Execute() {
     } else if (oi->GetGamePad()->GetButton(F310::kRightBumper)) {
         status = kDisabled;
     }
-    SmartDashboard::GetInstance()->Log(oi->GetGamePad()->GetButton(F310::kLeftBumper), "Left Bumper");
-    SmartDashboard::GetInstance()->Log(oi->GetGamePad()->GetButton(F310::kRightBumper), "Right Bumper");
+    
     if (status == kEnabled) {
         float speed = -oi->GetGamePad()->GetY(F310::kRightStick);
         float scale = 15;

@@ -19,10 +19,18 @@ void Drive::InitDefaultCommand() {
 }
 
 void Drive::TankDriveFunction(Joystick *leftStick, Joystick *rightStick){
-    drive->TankDrive(-leftStick->GetY(), -rightStick->GetY());
+    float leftValue = -leftStick->GetY();
+    float rightValue = -rightStick->GetY();
+    drive->TankDrive(leftValue, rightValue);
+    SmartDashboard::GetInstance()->Log(leftValue, "DriveLeftSpeed");
+    SmartDashboard::GetInstance()->Log(rightValue, "DriveRightSpeed");
+    SmartDashboard::GetInstance()->Log("Tank", "DriveStyle");
 }
 
 void Drive::TankDriveFunction(float leftValue, float rightValue){
+    SmartDashboard::GetInstance()->Log("Tank", "DriveStyle");
+    SmartDashboard::GetInstance()->Log(-leftValue, "DriveLeftSpeed");
+    SmartDashboard::GetInstance()->Log(-rightValue, "DriveRightSpeed");
     drive->TankDrive(-leftValue, -rightValue); 
 }
 
@@ -34,6 +42,9 @@ void Drive::ArcadeDriveFunction(Joystick *joystick){
     float speed = -joystick->GetY();
     float rotate = -joystick->GetX();
     drive->ArcadeDrive(speed, rotate);
+    SmartDashboard::GetInstance()->Log("Arcade", "DriveStyle");
+    SmartDashboard::GetInstance()->Log(speed, "DriveSpeed");
+    SmartDashboard::GetInstance()->Log(rotate, "DriveRotate");
 }
 
 void Drive::SetHighGear() {

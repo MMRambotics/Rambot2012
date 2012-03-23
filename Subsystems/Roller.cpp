@@ -15,14 +15,17 @@ void Roller::InitDefaultCommand() {
 }
 
 void Roller::rollerForward(){
-    rollerVictor.Set(ROLLER_SPEED);  
+    rollerVictor.Set(ROLLER_SPEED); 
+    SmartDashboard::GetInstance()->Log("Forward", "RollerStatus");
 }
 
 void Roller::rollerStop(){
     rollerVictor.Set(0.0);
+    SmartDashboard::GetInstance()->Log("Stop", "RollerStatus");
 }
 
 void Roller::rollerBackward(){
     rollerVictor.Set(-ROLLER_SPEED);
+    SmartDashboard::GetInstance()->Log("Reverse", "RollerStatus");
     
 }

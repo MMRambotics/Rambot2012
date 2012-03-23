@@ -17,6 +17,9 @@ Turret::Turret() : Subsystem("Turret") {
 	leftPIDControl->SetTolerance(1.0);
 	rightPIDControl->SetTolerance(1.0);
 	setpoint = 0.0;
+	
+    SmartDashboard::GetInstance()->Log("Stopped", "EncoderStatus");
+
 }
     
 void Turret::InitDefaultCommand() {
@@ -26,16 +29,19 @@ void Turret::InitDefaultCommand() {
 void Turret::SetShooterSpeed(float speed) {
     leftShooter->Set(speed);
     rightShooter->Set(speed);
+    SmartDashboard::GetInstance()->Log(speed, "ShooterSpeed");
 }
 
 void Turret::EnablePIDControl() {
     leftPIDControl->Enable();
     rightPIDControl->Enable();
+    SmartDashboard::GetInstance()->Log("Enabled", "ShooterPID");
 }
 
 void Turret::DisablePIDControl() {
     leftPIDControl->Disable();
     rightPIDControl->Disable();
+    SmartDashboard::GetInstance()->Log("Disabled", "ShooterPID");
 }
 
 void Turret::StopShooter() {
@@ -47,10 +53,13 @@ void Turret::SetRPM(float rpm) {
     leftPIDControl->SetSetpoint(rpm);
     rightPIDControl->SetSetpoint(rpm); 
     setpoint = rpm;
+    SmartDashboard::GetInstance()->Log(rpm, "ShooterRPMSetpoint");
 }
 
 void Turret::Pan(float value) {
-    panMotor->Set(value / 4.0);
+    float speed = value / 4.0;
+    panMotor->Set(speed);
+    SmartDashboard::GetInstance()->Log(speed, "ShooterPanSpeed");
 }
 
 void Turret::Process() {
@@ -68,6 +77,7 @@ void Turret::Process() {
 void Turret::Start() {
     leftEncoder->Start();
     rightEncoder->Start();
+    SmartDashboard::GetInstance()->Log("Started", "EncoderStatus");
 }
 
 void Turret::Reset() {
@@ -80,7 +90,6 @@ bool Turret::AtSetpoint() {
     float rightError = setpoint - rightEncoder->GetRPM();
     if (leftError < 0) leftError *= -1;
     if (rightError < 0) rightError *= -1;
-    
     
     if (rightError < TOLERANCE && leftError < TOLERANCE) {
         return true;
